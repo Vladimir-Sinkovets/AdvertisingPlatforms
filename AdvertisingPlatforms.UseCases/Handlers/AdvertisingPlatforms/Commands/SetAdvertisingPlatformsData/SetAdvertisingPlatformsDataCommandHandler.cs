@@ -21,7 +21,7 @@ namespace AdvertisingPlatforms.UseCases.Handlers.AdvertisingPlatforms.Commands.S
                 {
                     var parts = line.Split(':');
 
-                    if (parts.Length != 2)
+                    if (parts.Length != 2 )
                         throw new FormatException();
 
                     var locationData = new LocationData()
@@ -34,15 +34,9 @@ namespace AdvertisingPlatforms.UseCases.Handlers.AdvertisingPlatforms.Commands.S
                             }),
                     };
 
-                    if (IsValidLocation(locationData))
-                        throw new FormatException();
 
                     locations.Add(locationData);
                 }
-            }
-            catch (FormatException)
-            {
-                return Result<SetAdvertisingPlatformsDataCommandResponse>.Create(Status.BadData, "Wrong file format");
             }
             catch
             {
@@ -52,26 +46,6 @@ namespace AdvertisingPlatforms.UseCases.Handlers.AdvertisingPlatforms.Commands.S
             dataRepository.LocationData = locations;
 
             return Result<SetAdvertisingPlatformsDataCommandResponse>.Create(Status.Success, "Success");
-        }
-
-        private static bool IsValidLocation(LocationData locationData)
-        {
-            if (string.IsNullOrWhiteSpace(locationData.Title))
-                return false;
-
-            foreach (var location in locationData.Locations)
-            {
-                if (!location.StartsWith('/')) return false;
-
-                var segments = location.Split('/');
-
-                if (segments.All(s => s.All(char.IsLetter)))
-                {
-                    return false;
-                }
-            }
-
-            return true;
         }
     }
 }

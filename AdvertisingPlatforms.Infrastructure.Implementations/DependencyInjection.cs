@@ -8,7 +8,7 @@ namespace AdvertisingPlatforms.Infrastructure.Implementations
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            return services.AddTransient<ILocationDataRepository, LocationDataRepository>();
+            return services.AddSingleton<ILocationDataRepository, LocationDataRepository>();
         }
     }
 }
