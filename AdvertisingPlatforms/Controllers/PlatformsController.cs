@@ -1,22 +1,23 @@
+using AdvertisingPlatforms.UseCases.Handlers.AdvertisingPlatforms.Commands.SetAdvertisingPlatformsData;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AdvertisingPlatforms.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PlatformsController : ControllerBase
+    public class PlatformsController(IMediator mediatr) : ControllerBase
     {
-        private readonly ILogger<PlatformsController> _logger;
-
-        public PlatformsController(ILogger<PlatformsController> logger)
-        {
-            _logger = logger;
-        }
-
         [HttpPost]
-        public IActionResult UploadAdvertisingPlatformsData(IFormFile file)
+        [Route("upload")]
+        public async Task<IActionResult> UploadAdvertisingPlatformsData(IFormFile file)
         {
+            var command = new SetAdvertisingPlatformsDataCommand()
+            {
+                Stream = file.OpenReadStream(),
+            };
 
+            await mediatr.Send(command);
 
             return Ok();
         }
