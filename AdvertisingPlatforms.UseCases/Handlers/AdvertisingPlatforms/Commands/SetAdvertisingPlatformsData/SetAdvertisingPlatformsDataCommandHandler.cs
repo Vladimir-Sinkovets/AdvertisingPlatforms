@@ -27,7 +27,11 @@ namespace AdvertisingPlatforms.UseCases.Handlers.AdvertisingPlatforms.Commands.S
                     var locationData = new LocationData()
                     {
                         Title = parts[0].Trim(),
-                        Locations = parts[1].Split(','),
+                        Locations = parts[1].Split(',')
+                            .Select(x => new LocationSegments()
+                            {
+                                Segments = x.Split("/", StringSplitOptions.RemoveEmptyEntries)
+                            }),
                     };
 
                     if (IsValidLocation(locationData))

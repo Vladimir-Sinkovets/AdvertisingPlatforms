@@ -3,6 +3,6 @@
     public class LocationData
     {
         public string Title { get; set; }
-        public IEnumerable<string> Locations { get; set; }
+        public IEnumerable<LocationSegments> Locations { get; set; }
     }
 }
