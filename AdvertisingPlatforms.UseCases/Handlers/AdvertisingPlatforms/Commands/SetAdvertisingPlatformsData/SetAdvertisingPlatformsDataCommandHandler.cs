@@ -21,6 +21,9 @@ namespace AdvertisingPlatforms.UseCases.Handlers.AdvertisingPlatforms.Commands.S
                 {
                     var parts = line.Split(':');
 
+                    if (parts.Length != 2)
+                        throw new FormatException();
+
                     var locationData = new LocationData()
                     {
                         Title = parts[0].Trim(),
@@ -28,16 +31,18 @@ namespace AdvertisingPlatforms.UseCases.Handlers.AdvertisingPlatforms.Commands.S
                     };
 
                     if (IsValidLocation(locationData))
-                    {
                         throw new FormatException();
-                    }
 
                     locations.Add(locationData);
                 }
             }
-            catch
+            catch (FormatException)
             {
                 return Result<SetAdvertisingPlatformsDataCommandResponse>.Create(Status.BadData, "Wrong file format");
+            }
+            catch
+            {
+                return Result<SetAdvertisingPlatformsDataCommandResponse>.Create(Status.ServerError, "Server error");
             }
 
             dataRepository.LocationData = locations;

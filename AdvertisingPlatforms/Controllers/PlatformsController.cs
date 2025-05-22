@@ -6,7 +6,7 @@ namespace AdvertisingPlatforms.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PlatformsController(IMediator mediatr) : ControllerBase
+    public class PlatformsController(IMediator mediatr) : BaseController
     {
         [HttpPost]
         [Route("upload")]
@@ -17,9 +17,9 @@ namespace AdvertisingPlatforms.Controllers
                 Stream = file.OpenReadStream(),
             };
 
-            await mediatr.Send(command);
+            var result = await mediatr.Send(command);
 
-            return Ok();
+            return SendResult(result);
         }
     }
 }

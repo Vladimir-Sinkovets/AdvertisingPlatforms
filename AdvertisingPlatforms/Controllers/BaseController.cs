@@ -11,6 +11,7 @@ namespace AdvertisingPlatforms.Controllers
             {
                 Status.Success => Ok(result),
                 Status.BadData => BadRequest(result),
+                Status.ServerError => StatusCode(500, result),
                 _ => StatusCode(500, result),
             };
         }
