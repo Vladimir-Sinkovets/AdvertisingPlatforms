@@ -21,7 +21,7 @@ namespace AdvertisingPlatforms.UseCases.Handlers.AdvertisingPlatforms.Commands.S
                 {
                     var parts = line.Split(':');
 
-                    if (parts.Length != 2 )
+                    if (parts.Length != 2 || string.IsNullOrWhiteSpace(parts[0]))
                         throw new FormatException();
 
                     var locationData = new LocationData()
@@ -40,7 +40,7 @@ namespace AdvertisingPlatforms.UseCases.Handlers.AdvertisingPlatforms.Commands.S
             }
             catch
             {
-                return Result<SetAdvertisingPlatformsDataCommandResponse>.Create(Status.ServerError, "Server error");
+                return Result<SetAdvertisingPlatformsDataCommandResponse>.Create(Status.BadData, "Bad data");
             }
 
             dataRepository.LocationData = locations;

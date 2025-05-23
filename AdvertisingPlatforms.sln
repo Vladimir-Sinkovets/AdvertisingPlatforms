@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvertisingPlatforms.Infras
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvertisingPlatforms.Infrastructure.Implementations", "AdvertisingPlatforms.Infrastructure.Implementations\AdvertisingPlatforms.Infrastructure.Implementations.csproj", "{03FA51B8-4B44-4D07-A8A8-ADACBC22EEA5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvertisingPlatforms.UseCases.Tests", "AdvertisingPlatforms.UseCases.Tests\AdvertisingPlatforms.UseCases.Tests.csproj", "{4C769DF1-7AC2-439F-9CF9-3D91B7D70255}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{03FA51B8-4B44-4D07-A8A8-ADACBC22EEA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03FA51B8-4B44-4D07-A8A8-ADACBC22EEA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03FA51B8-4B44-4D07-A8A8-ADACBC22EEA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C769DF1-7AC2-439F-9CF9-3D91B7D70255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C769DF1-7AC2-439F-9CF9-3D91B7D70255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C769DF1-7AC2-439F-9CF9-3D91B7D70255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C769DF1-7AC2-439F-9CF9-3D91B7D70255}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
